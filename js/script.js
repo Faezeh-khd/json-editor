@@ -1,5 +1,5 @@
 
-$.getJSON("../data.json", function (json) {
+$.getJSON("https://faezeh-khd.github.io/json-editor/data/data.json", function (json) {
   showData (json);
 });
 
