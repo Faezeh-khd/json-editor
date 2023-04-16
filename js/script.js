@@ -1,5 +1,5 @@
 
-$.getJSON("../data/data.json", function (json) {
+$.getJSON("http://127.0.0.1:5500/data/data.json", function (json) {
   showData (json);
 });
 
@@ -26,7 +26,7 @@ $.getJSON("../data/data.json", function (json) {
       var title = value.titles.ar || value.titles.fa;
 
       // Check if the title contains the search query
-      if (title.toLowerCase().indexOf(query) !== -1) {
+      if (title.indexOf(query) !== -1) {
         // Create an <i> element with the edit icon
         var icon = $("<i>").addClass("fas fa-edit");
 
@@ -86,6 +86,15 @@ function createRemoveButton() {
   return removeButton;
 }
 
+var scrollToTopBtn = document.getElementById("scrollToTopBtn")
+var rootElement = document.documentElement
+function scrollToTop() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  })
+}
 /**********************      Handlers      ******************************/
 var attachSaveHandler = function (button, callback) {
   $(button).on("click", callback);
