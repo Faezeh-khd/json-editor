@@ -561,7 +561,7 @@ $.app = function (selector, data, callback, options) {
       alert("تغییرات با موفقیت ثبت شد")
     // console.log(newData);
     // callback(newData);
-    window.location.href = "homePage.html";
+    window.location.href = "index.html";
     event.preventDefault();
     });
     $element.append(button);
