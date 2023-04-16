@@ -14,7 +14,7 @@ $.getJSON("../data.json", function (json) {
   var titlesList = $("#titles-list");
 
   // Handle the keyup event on the search field
-  $("#searchInput").on("keyup", function () {
+  $(".searchInput").on("keyup", function () {
     // Get the search query
     var query = $(this).val();
 
@@ -55,7 +55,7 @@ $.getJSON("../data.json", function (json) {
   });
 
   // Initialize the form with the first page of search results
-  $("#searchInput").trigger("keyup");
+  $(".searchInput").trigger("keyup");
 
   $(function () {
     var data = JSON.parse(localStorage.getItem("updatedData"));
