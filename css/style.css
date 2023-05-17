@@ -89,7 +89,6 @@ body {
 .list-group-item:hover{
   background-color: rgba(0, 91, 170, 0.1);
 }
-
 /* data obj file */
 
 .app {
@@ -172,6 +171,13 @@ body {
 }
 .app-save:hover {
   background-image: linear-gradient(#5de02e, #2d9600);
+}
+.simple-pagination{
+    padding: 10px auto !important;
+}
+.light-theme .current {
+  background: var(--blue) !important;
+  border-color: var(--blue) !important;
 }
 .ws-copyright {
   font-size: 0.8rem;

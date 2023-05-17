@@ -1,8 +1,11 @@
-$.getJSON("http://127.0.0.1:5500/data/data.json", function (json) {
-  showData (json);
+
+$.getJSON("../data/01_test.json", function (json) {
+  showData(json);
+  $('#overlay').fadeOut();
 });
 
- function showData (json) {
+
+function showData(json) {
   json.sort(function (a, b) {
     var titleA = a.titles.ar || a.titles.fa;
     var titleB = b.titles.ar || b.titles.fa;
@@ -11,6 +14,21 @@ $.getJSON("http://127.0.0.1:5500/data/data.json", function (json) {
 
   // Cache the titles list
   var titlesList = $("#titles-list");
+  $(function () {
+    $(".list-group .list-group-item").slice(4).hide();
+    $("#pagination").pagination({
+      // Total number of items present in list-group class
+      items: 14,
+      // Items allowed on a single page
+      itemsOnPage: 4,
+      onPageClick: function (subset) {
+        $(".list-group .list-group-item")
+          .hide()
+          .slice(4 * (subset - 1), 4 + 4 * (subset - 1))
+          .show();
+      },
+    });
+  });
 
   // Handle the keyup event on the search field
   $(".searchInput").on("keyup", function () {
@@ -65,6 +83,7 @@ $.getJSON("http://127.0.0.1:5500/data/data.json", function (json) {
       showSaveButton: true,
     });
   });
+  $('#overlay').fadeOut();
 }
 
 var DEFAULT_SEPARATOR = " : ";
@@ -85,14 +104,14 @@ function createRemoveButton() {
   return removeButton;
 }
 
-var scrollToTopBtn = document.getElementById("scrollToTopBtn")
-var rootElement = document.documentElement
+var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+var rootElement = document.documentElement;
 function scrollToTop() {
   // Scroll to top logic
   rootElement.scrollTo({
     top: 0,
-    behavior: "smooth"
-  })
+    behavior: "smooth",
+  });
 }
 /**********************      Handlers      ******************************/
 var attachSaveHandler = function (button, callback) {
@@ -104,7 +123,6 @@ var attachCollapseHandler = function (button) {
     e.preventDefault();
     var value = $(button).next();
     if ($(button).hasClass("collapsed")) {
-      // $(button).text("بستن");
       $(button).empty();
       $(button).append('<i class="fa-solid fa-angle-up"></i>');
       $(value).slideDown("slow", function () {
@@ -115,7 +133,6 @@ var attachCollapseHandler = function (button) {
         $(button).addClass("collapsed");
         $(button).empty();
         $(button).append('<i class="fa-solid fa-angle-down"></i>');
-        // $(button).text("بازکردن");
       });
     }
   });
@@ -238,7 +255,6 @@ var createKeyValuePairHTML = function (key, value, options) {
     var button = $(document.createElement("button"));
     button.addClass("app-collapse-item bg-transparent border-0");
     if (depth !== 0) {
-      // button.text("بستن");
       button.empty();
       button.append('<i class="fa-solid fa-angle-up"></i>');
       attachCollapseHandler(button);
@@ -247,7 +263,6 @@ var createKeyValuePairHTML = function (key, value, options) {
       }
     } else {
       button.addClass("collapsed");
-      // button.text("بازکردن");
       valueHTML.hide();
       button.empty();
       button.append('<i class="fa-solid fa-angle-down"></i>');
@@ -566,11 +581,11 @@ $.app = function (selector, data, callback, options) {
     var button = getSaveButton();
     attachSaveHandler(button, function (event) {
       var newData = reassembleJSON($element.children(), options);
-      alert("تغییرات با موفقیت ثبت شد")
-    // console.log(newData);
-    // callback(newData);
-    window.location.href = "index.html";
-    event.preventDefault();
+      alert("تغییرات با موفقیت ثبت شد");
+      // console.log(newData);
+      // callback(newData);
+      window.location.href = "index.html";
+      event.preventDefault();
     });
     $element.append(button);
   }

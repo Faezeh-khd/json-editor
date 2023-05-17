@@ -7,7 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  <link rel='stylesheet' href='./font/fontawesome-free-6.4.0-web/fontawesome-free-6.4.0-web/css/all.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="./js/jquery-3.6.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/simplePagination.min.css">
+  <script src="./js/script.js"></script>
 
   <title>سامانه ویرایش فایل JSON</title>
 </head>
@@ -22,9 +29,6 @@
             <a class="nav-link" aria-current="page" href="./index.html">
               صفحه اصلی</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" onclick='saveToDisk()' href="#">دانلود فایل</a>
-          </li> -->
         </ul>
         <form class="search-box d-flex me-auto" role="search" action="./dataObj.html">
           <input class="form-control bg-light searchInput" type="search" placeholder="جستجو ..." aria-label="Search" />
@@ -60,10 +64,12 @@
   </div>
   <div class="mx-auto p-2 w-50 my-2">
     <ol id="titles-list" class="list-group ">
-      <!-- <li>
-          <h3>Loading...</h3>
-      </li> -->
-  </ol>
+      <div id="overlay" class="text-center">
+        <img src="img/Loading_icon.gif" alt="Loading" />
+   </div> 
+    </ol>
+
+    <div id="pagination" class=" my-3"></div>
   </div>
 
   <footer class="mt-5">
@@ -77,9 +83,6 @@
   <a href="#" class="ws-top-btn">
     <i class="fas fa-arrow-up"></i>
   </a>
-
-  <script src="./js/jquery-3.6.3.min.js"></script>
-  <script src="./js/script.js"></script>
 
 </body>
 
